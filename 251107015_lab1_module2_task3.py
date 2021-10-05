@@ -28,8 +28,8 @@ if recv1[:3] != '250':
     print('250 reply not received from server.')
 
 # Authenticate
-username = "jjmac10112001@gmail.com"
-password = "newpassword1!"
+username = "youremail@gmail.com"
+password = "password"
 base64_str = ("\x00"+username+"\x00"+password).encode()
 base64_str = base64.b64encode(base64_str)
 authMsg = "AUTH PLAIN ".encode()+base64_str+"\r\n".encode()
@@ -38,7 +38,7 @@ recv_auth = clientSocket.recv(1024)
 print(recv_auth.decode())
 
 # Send MAIL FROM command and print server response.
-mailFrom = "MAIL FROM: <jjmac10112001@gmail.com>\r\n"
+mailFrom = "MAIL FROM: <youremail@gmail.com>\r\n"
 clientSocket.send(mailFrom.encode())
 recv2 = clientSocket.recv(1024)
 recv2 = recv2.decode()
@@ -46,7 +46,7 @@ print('Mail From command: ' + recv2)
 
 
 # Send RCPT TO command and print server response.
-rcptTo = "RCPT TO: <justinbeaudry10@gmail.com>\r\n"
+rcptTo = "RCPT TO: <someemail@gmail.com>\r\n"
 clientSocket.send(rcptTo.encode())
 recv3 = clientSocket.recv(1024)
 recv3 = recv3.decode()
